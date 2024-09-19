@@ -1,4 +1,4 @@
 # File extensions to ignore
 *.Rhistory
-*.RData
 *.Ruserdata
+results/
