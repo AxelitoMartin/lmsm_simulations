@@ -3,7 +3,7 @@
     "path": "~/Documents/GitHub/lmsm_simulations/R/summarise_sims.R",
     "project_path": "R/summarise_sims.R",
     "type": "r_source",
-    "hash": "3247603211",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1726497303104.0,
@@ -13,15 +13,15 @@
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "331,0",
-        "scrollLine": "309"
+        "cursorPosition": "104,28",
+        "scrollLine": "85"
     },
     "folds": "",
-    "lastKnownWriteTime": 1726497703,
+    "lastKnownWriteTime": 1726758286,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1726497703448,
+    "last_content_update": 1726758286208,
     "read_only": false,
     "read_only_alternatives": []
 }

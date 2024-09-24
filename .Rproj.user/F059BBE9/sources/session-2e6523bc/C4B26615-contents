@@ -67,6 +67,12 @@ get_summ <- function(results, rm_bounds = c(-Inf, Inf), quant_bound = c(0, 1)){
       biastml = mean(biastml_k, na.rm = TRUE),
       biasipw = mean(biasipw_k, na.rm = TRUE),
       
+      ## scaled mean bias ##
+      scaled_biassdr = biassdr*sqrt(n),
+      scaled_biastml = biastml*sqrt(n),
+      scaled_biasipw = biasipw*sqrt(n),
+      
+      
       ## median bias ##
       med_biassdr = median(biassdr_k, na.rm = TRUE),
       med_biastml = median(biastml_k, na.rm = TRUE),
@@ -91,6 +97,12 @@ get_summ <- function(results, rm_bounds = c(-Inf, Inf), quant_bound = c(0, 1)){
       MSEsdr = mean(biassdr_k^2, na.rm = TRUE),
       MSEtml = mean(biastml_k^2, na.rm = TRUE),
       MSEipw = mean(biasipw_k^2, na.rm = TRUE),
+      
+      
+      ## scaled Mean squared error ##
+      scaled_MSEsdr = MSEsdr*n,
+      scaled_MSEtml = MSEtml*n,
+      scaled_MSEipw = MSEipw*n,
       
       ## variance of estimates ##
       varsdr_est = var(sdr, na.rm = TRUE),
