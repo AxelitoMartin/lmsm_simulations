@@ -8,7 +8,6 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = F, warning = F, message = F, fig.width=12, fig.height=8)
-library(lfdmsm)
 library(here)
 library(dplyr)
 library(reshape2)
@@ -195,7 +194,7 @@ ps <- get_plots(summ = summ, results = est, rm_bounds = rm_bounds, quant_bound =
 #### U1 distributions
 
 ```{r}
-ps$U1
+ps$pU1
 ```
 
 #### Bias of U1
@@ -283,18 +282,16 @@ ps$p_cov_slope
 
 ```{r}
 library(scales)
-p_bias <- ps$pbias_slope + labs(color = "Estimator")
-p_bias_n <- ps$pbias_slope_n + coord_cartesian(ylim = c(0, 6)) + ylab("Scaled Bias") + labs(color = "Estimator")
-p_MSE <- ps$pMSE_slope_n + coord_cartesian(ylim = c(0, 35)) + ylab("Scaled MSE") + labs(color = "Estimator")
+p_bias <- ps$pbias_slope + labs(color = "Estimator") + theme(axis.title.x = element_blank())
+p_bias_n <- ps$pbias_slope_n + coord_cartesian(ylim = c(0, 6)) + ylab("Scaled Bias") + labs(color = "Estimator") + theme(axis.title.x = element_blank())
+p_MSE <- ps$pMSE_slope_n + coord_cartesian(ylim = c(0, 35)) + ylab("Scaled MSE") + labs(color = "Estimator") + theme(axis.title.x = element_blank())
 p_cov <- ps$p_cov_slope + labs(color = "Estimator")
-fig_1 <- ggarrange(plotlist = list(p_bias, p_bias_n, p_MSE, p_cov), ncol = 1, nrow = 4, common.legend = T)
+fig_1 <- ggarrange(plotlist = list(p_bias, p_bias_n, p_MSE, p_cov), ncol = 1, nrow = 4, common.legend = T, align = "v")
 fig_1
 ```
 
 
 ```{r}
 # save the figure to PNG with good resolution #
-png(filename = here("results/fig_1.png"), width = 1200, height = 800, res = 100)
-fig_1
-dev.off()
+ggsave(here("results/fig_1.png"), plot = fig_1, width = 12, height = 8, dpi = 500)
 ```

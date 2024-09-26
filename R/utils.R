@@ -1711,15 +1711,6 @@ estimators  <- function(data, tau, A, L, Y, est = c("sdr","tml"),
         
         ### Sequential regression estimator ###
         if("sdr" %in% est){
-          # if(get_la) Zs <- t(apply((ladata / dens)[, (t+1):tau, drop = FALSE], 1, cumprod)) else Zs <- t(apply((1 / dens)[, (t+1):tau, drop = FALSE], 1, cumprod))
-          # if(t == tau - 1) {
-          #   if(scale_weights)
-          #     Zs <- Zs/mean(Zs)
-          #   Zs <- t(Zs)
-          # } else{
-          #   if(scale_weights)
-          #     Zs <- apply(Zs,2,function(x){x/mean(x)})
-          # }
           
           Zs <- t(apply((ladata / dens)[, (t+1):tau, drop = FALSE], 1, cumprod))
           if(t == tau - 1) Zs <- t(Zs)

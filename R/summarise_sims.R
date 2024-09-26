@@ -220,14 +220,14 @@ get_plots <- function(summ, results, rm_bounds, quant_bound){
   
   ## U1 plot ##
   pU1bias_slope <- melt(summ, id = c("scen", "n", "type")) %>%
-    filter(type == "slope", grepl("U1bias", variable), !grepl("abs|rel|med",variable)) %>%
+    filter(type == "slope", grepl("U1bias", variable), !grepl("scaled|abs|rel|med",variable)) %>%
     ggplot(aes(x = n, y = value, group = variable, color = variable)) +
     geom_point(aes(group = variable)) +
     scale_color_manual(values=c("blue", "black", "red"), labels = c("SDR","TMLE","IPW")) +
     geom_line(aes(group = variable)) + theme_bw() + facet_wrap(~scen,nrow = 1) + ylab("Bias") +
     labs(variable = "Method")
   pU1bias_slope_n <- melt(summ, id = c("scen", "n", "type")) %>%
-    filter(type == "slope", grepl("U1bias", variable), !grepl("abs|rel|med",variable)) %>%
+    filter(type == "slope", grepl("U1bias", variable), !grepl("scaled|abs|rel|med",variable)) %>%
     mutate(value = value * sqrt(n)) %>%
     ggplot(aes(x = n, y = value, group = variable, color = variable)) +
     geom_point(aes(group = variable)) +
@@ -244,14 +244,14 @@ get_plots <- function(summ, results, rm_bounds, quant_bound){
     geom_line(aes(group = variable)) + theme_bw() + facet_wrap(~scen,nrow = 1) + ylab("Bias") +
     labs(variable = "Method")
   pbias_slope <- melt(summ, id = c("scen", "n", "type")) %>%
-    filter(type == "slope", grepl("bias", variable), !grepl("abs|rel|med|U1",variable)) %>%
+    filter(type == "slope", grepl("bias", variable), !grepl("scaled|abs|rel|med|U1",variable)) %>%
     ggplot(aes(x = n, y = value, group = variable, color = variable)) +
     geom_point(aes(group = variable)) +
     scale_color_manual(values=c("blue", "black", "red"), labels = c("SDR","TMLE","IPW")) +
     geom_line(aes(group = variable)) + theme_bw() + facet_wrap(~scen,nrow = 1) + ylab("Bias") +
     labs(variable = "Method")
   pbias_slope_n <- melt(summ, id = c("scen", "n", "type")) %>%
-    filter(type == "slope", grepl("bias", variable), !grepl("abs|rel|med|U1",variable)) %>%
+    filter(type == "slope", grepl("bias", variable), !grepl("scaled|abs|rel|med|U1",variable)) %>%
     mutate(value = value * sqrt(n)) %>%
     ggplot(aes(x = n, y = value, group = variable, color = variable)) + geom_point(aes(group = variable)) +
     scale_color_manual(values=c("blue", "black", "red"), labels = c("SDR","TMLE","IPW")) +
@@ -286,14 +286,14 @@ get_plots <- function(summ, results, rm_bounds, quant_bound){
     geom_line(aes(group = variable)) + theme_bw() + facet_wrap(~scen,nrow = 1) + ylab("Bias * sqrt(n)") +
     labs(variable = "Method")
   pMSE_slope <- melt(summ, id = c("scen", "n", "type")) %>%
-    filter(type == "slope", grepl("MSE", variable)) %>%
+    filter(type == "slope", grepl("MSE", variable), !grepl("scaled|abs|rel|med|U1",variable)) %>%
     ggplot(aes(x = n, y = value, group = variable, color = variable)) +
     geom_point(aes(group = variable)) +
     scale_color_manual(values=c("blue", "black", "red"), labels = c("SDR","TMLE","IPW")) +
     geom_line(aes(group = variable)) + theme_bw() + facet_wrap(~scen,nrow = 1) + ylab("MSE") +
     labs(variable = "Method")
   pMSE_slope_n <- melt(summ, id = c("scen", "n", "type")) %>%
-    filter(type == "slope", grepl("MSE", variable)) %>%
+    filter(type == "slope", grepl("MSE", variable), !grepl("scaled|abs|rel|med|U1",variable)) %>%
     mutate(value = value * n) %>%
     ggplot(aes(x = n, y = value, group = variable, color = variable)) + geom_point(aes(group = variable)) +
     scale_color_manual(values=c("blue", "black", "red"), labels = c("SDR","TMLE","IPW")) +
