@@ -282,10 +282,15 @@ ps$p_cov_slope
 
 ```{r}
 library(scales)
-p_bias <- ps$pbias_slope + labs(color = "Estimator") + theme(axis.title.x = element_blank())
-p_bias_n <- ps$pbias_slope_n + coord_cartesian(ylim = c(0, 6)) + ylab("Scaled Bias") + labs(color = "Estimator") + theme(axis.title.x = element_blank())
-p_MSE <- ps$pMSE_slope_n + coord_cartesian(ylim = c(0, 35)) + ylab("Scaled MSE") + labs(color = "Estimator") + theme(axis.title.x = element_blank())
-p_cov <- ps$p_cov_slope + labs(color = "Estimator")
+p_bias <- ps$pbias_slope + labs(color = "Estimator") + theme(axis.title.x = element_blank()) + 
+  theme(axis.title.y = element_text(size = 16))  # Increase Y-axis label size
+p_bias_n <- ps$pbias_slope_n + coord_cartesian(ylim = c(0, 6)) + ylab("Scaled bias") + labs(color = "Estimator") + theme(axis.title.x = element_blank()) + 
+  theme(axis.title.y = element_text(size = 16))  # Increase Y-axis label size
+p_MSE <- ps$pMSE_slope_n + coord_cartesian(ylim = c(0, 30)) + ylab("Scaled MSE") + labs(color = "Estimator") + theme(axis.title.x = element_blank()) + 
+  theme(axis.title.y = element_text(size = 16))  # Increase Y-axis label size
+p_cov <- ps$p_cov_slope + labs(color = "Estimator") + 
+  theme(axis.title.x = element_text(size = 18),  # Increase X-axis label size
+        axis.title.y = element_text(size = 16))  # Increase Y-axis label size
 fig_1 <- ggarrange(plotlist = list(p_bias, p_bias_n, p_MSE, p_cov), ncol = 1, nrow = 4, common.legend = T, align = "v")
 fig_1
 ```
